@@ -7,10 +7,9 @@ from minepy import MINE
 def compute(x, y, indicator):
 	mine = MINE(alpha=0.6, c=15, est="mic_approx")
 	mine.compute_score(x, y)
-	r = np.around(np.corrcoef(x, y)[0, 1], 1)
-	print("indicator: " + indicator)
-	print("mic: " + mine.mic())
-	print("person: " + r)
+	# r = np.around(np.corrcoef(x, y)[0, 1], 1)
+	print(indicator + ': ' + str(mine.mic()))
+	# print("person: " + r)
 
 # get current work dir
 dirname = os.getcwd()
@@ -26,7 +25,8 @@ csvfiles = list(filter(lambda x: x[-4:]=='.csv' , files))
 
 # outer join data on area code column
 for csvfile in csvfiles:
-	df = pd.DataFrame.from_csv(csvfile)
+	# df = pd.DataFrame.from_csv(csvfile)
+	df = pd.DataFrame.from_csv(os.path.join(dirname,'source',csvfile))
 
 	# get indicator (NOTE: the column name and file name is should be the same)
 	indicator = os.path.splitext(csvfile)[0]
