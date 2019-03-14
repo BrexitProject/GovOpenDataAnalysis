@@ -35,7 +35,7 @@ for csvfile in csvfiles:
 	tmp = df0.merge(df, how = 'inner', on = 'Area_Code')
 
 	# compute the mic and person value 
-	compute(tmp['Remain'], tmp[indicator], indicator)
+	compute(tmp['Pct_Leave'], tmp[indicator], indicator)
 
 # plt.figure(facecolor = 'white')
 # generate()
